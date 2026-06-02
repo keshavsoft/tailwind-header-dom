@@ -1,0 +1,48 @@
+{
+  "name": "tailwind-todo",
+  "version": "1.5.10",
+  "description": "CLI to scaffold projects using templates",
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "todo",
+    "tailwind-todo",
+    "boilerplate",
+    "scaffold",
+    "starter",
+    "template",
+    "cli"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:header": "vite build --config vite.header.config.js",
+    "build:table": "vite build --config vite.table.config.js",
+    "build:all": "vite build --config vite.all.config.js"
+  },
+  "devDependencies": {
+    "vite": "^8.0.14"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "bin": {
+    "tailwind-todo": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://keshavsoft.github.io/tailwind-todo/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshavsoft/tailwind-todo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/keshavsoft/tailwind-todo/issues"
+  }
+}

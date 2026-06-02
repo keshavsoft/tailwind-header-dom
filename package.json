@@ -1,6 +1,6 @@
 {
-  "name": "tailwind-todo",
-  "version": "1.5.10",
+  "name": "tailwind-header",
+  "version": "1.3.1",
   "description": "CLI to scaffold projects using templates",
   "keywords": [
     "tailwind",
@@ -32,12 +32,12 @@
     "README.md",
     "LICENSE"
   ],
-  "homepage": "https://keshavsoft.github.io/tailwind-todo/",
+  "homepage": "https://keshavsoft.github.io/tailwind-header/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/keshavsoft/tailwind-todo.git"
+    "url": "git+https://github.com/keshavsoft/tailwind-header.git"
   },
   "bugs": {
-    "url": "https://github.com/keshavsoft/tailwind-todo/issues"
+    "url": "https://github.com/keshavsoft/tailwind-header/issues"
   }
 }

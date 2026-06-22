@@ -1,6 +1,6 @@
 {
   "name": "tailwind-header-dom",
-  "version": "5.8.2",
+  "version": "5.8.3",
   "description": "CLI to scaffold projects using templates",
   "keywords": [
     "tailwind",
@@ -24,7 +24,7 @@
     ".": "./index.js"
   },
   "bin": {
-    "tailwind-todo": "./bin/cli.js"
+    "tailwind-header-dom": "./bin/cli.js"
   },
   "files": [
     "bin/",

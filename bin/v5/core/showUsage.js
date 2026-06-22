@@ -24,17 +24,17 @@ export default function showUsage(version) {
     const r = "\x1b[0m";
 
     console.log(`
-${c}🚀 tailwind-todo   v${version}${r}
+${c}🚀 tailwind-header-dom v${version}${r}
 
 ${y}Usage:${r}
-  ${g}npx tailwind-todo  ${r} <command>
+  ${g}npx tailwind-header-dom ${r} <command>
 
 ${y}Commands:${r}
   ${g}Header${r}      Builds header structure
   
 
 ${y}Examples:${r}
-  ${gray}npx tailwind-todo   header${r}
+  ${gray}npx tailwind-header-dom header${r}
 
 ${y}Architecture:${r}
   ${gray}commands are auto-loaded dynamically${r}

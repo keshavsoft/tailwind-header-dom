@@ -1,6 +1,9 @@
 import fs from "fs";
+import getLatestVersion from "./getLatestVersion.js";
 
-export default function resolveFolderName({ name, defaultFolerName = "headerV1" }) {
+export default function resolveFolderName({ name, defaultFolerName }) {
+    const v = getLatestVersion;
+    defaultFolerName = v || "headerV1"
     // case 1: force new → timestamp
     if (name === null) {
         name = defaultFolerName;

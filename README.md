@@ -1,3 +1,7 @@
+start using this repo
+
+https://github.com/keshavsoft/ks-web-comp-table
+
 # tailwind-todo
 
 CLI to scaffold Tailwind based starter projects quickly.

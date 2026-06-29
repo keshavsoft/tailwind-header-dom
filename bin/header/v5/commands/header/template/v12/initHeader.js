@@ -64,6 +64,6 @@ const initHeader = (config = {}) => {
 
 window.KSHeader = initHeader;
 
-console.log("KSHeader v11 loaded to DOM");
+console.log("KSHeader v10 loaded to DOM");
 
 export default initHeader;

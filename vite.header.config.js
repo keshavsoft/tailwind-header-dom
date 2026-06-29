@@ -8,7 +8,7 @@ export default {
             formats: ["umd"],
             fileName: () => `${templateVersion}/ksheader.js`
         },
-        outDir: "Public",
+        outDir: "public",
         emptyOutDir: false
     }
 };

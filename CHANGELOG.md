@@ -40,3 +40,8 @@ The format is based on Keep a Changelog.
 ### Added
 - vite perfect
 
+## [5.13.1] - 2026-07-02
+
+### Added
+- menu click blue
+

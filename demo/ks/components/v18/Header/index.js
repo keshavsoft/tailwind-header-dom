@@ -1,5 +1,5 @@
 import "./NavBar/index.js";
 import "./MenuItem/index.js";
-import "./Dropdown/index.js";
+import "./dropdown/v2/index.js";
 
 export default {};

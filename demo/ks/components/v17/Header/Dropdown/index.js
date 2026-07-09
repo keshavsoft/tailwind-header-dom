@@ -5,8 +5,8 @@ class KSDropdown extends HTMLElement {
         if (this.dataset.rendered === "true") return;
         this.dataset.rendered = "true";
 
-        // Create container div
-        const container = document.createElement("div");
+        // Create container li
+        const container = document.createElement("li");
         container.className = "relative inline-block text-left w-full md:w-auto";
 
         // Create trigger button

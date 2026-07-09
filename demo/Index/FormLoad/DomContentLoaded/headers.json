@@ -18,7 +18,16 @@
                 "svgDivClass": "size-10"
             },
             "svgName": "squaresPlus",
-            "href1": "../both/index.html"
+            "dropdownItems": [
+                {
+                    "text": "New Quotation",
+                    "href": "#new-quotation"
+                },
+                {
+                    "text": "Import Quotation",
+                    "href": "#import"
+                }
+            ]
         },
         {
             "text": "Descend",

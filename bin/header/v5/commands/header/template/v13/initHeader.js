@@ -9,7 +9,7 @@ const initHeader = (config = {}) => {
     const header = document.getElementById("header");
 
     if (!header) return;
-    
+
     const nav = buildNav({ inTitle: config.title, inUiClasses: config.uiClasses });
 
     header.appendChild(nav);
@@ -64,6 +64,11 @@ const initHeader = (config = {}) => {
 
 window.KSHeader = initHeader;
 
-console.log("KSHeader v10 loaded to DOM");
+window.ks = window.ks || {};
+window.ks.components = window.ks.components || {};
+window.ks.components.header = initHeader;
+window.ks.components.headerVersion = "v13";
+
+console.log("KSHeader v13 loaded to DOM");
 
 export default initHeader;

@@ -71,7 +71,7 @@ const ensureKSHeader = () => loadResource({
     name: "KSHeader",
     isLoaded: () => !!window.KSHeader,
     sources: [
-        { type: "js", url: "/ks/header/v13/initHeader.js", label: "Local" },
+        { type: "js", url: "/ks/header/v14/initHeader.js", label: "Local" },
         { type: "js", url: "https://keshavsoft.github.io/tailwind-header-dom/public/v13/ksheader.js", label: "git" }
     ]
 });

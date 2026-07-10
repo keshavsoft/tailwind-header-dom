@@ -1,5 +1,5 @@
 import { createButton } from "./Button/createButton.js";
-import { createBtnContent } from "./Button/createBtnContent.js";
+import { createBtnContent } from "./Button/createBtnContent/index.js";
 import { createMenu } from "./Menu/createMenu.js";
 import { populateMenu } from "./Menu/populateMenu.js";
 import { setupEventListeners } from "./Events/setupEventListeners.js";
@@ -48,7 +48,7 @@ window.ks = window.ks || {};
 window.ks.components = window.ks.components || {};
 window.ks.components.dropdown = window.ks.components.dropdown || {};
 window.ks.components.dropdown.responsive = window.ks.components.dropdown.responsive || {};
-window.ks.components.dropdown.responsive.version = "v5";
+window.ks.components.dropdown.responsive.version = "v6";
 window.ks.components.dropdown.responsive.defaults = defaults;
 
 export default defaults;

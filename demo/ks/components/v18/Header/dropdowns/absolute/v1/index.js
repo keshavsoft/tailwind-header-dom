@@ -1,4 +1,4 @@
-import { getIcon } from "../Common/getIcon.js";
+import { getIcon } from "../../../Common/getIcon.js";
 
 const createContainer = () => {
     const container = document.createElement("li");

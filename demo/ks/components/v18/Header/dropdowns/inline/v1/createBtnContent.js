@@ -1,4 +1,4 @@
-import { getIcon } from "../Common/getIcon.js";
+import { getIcon } from "../../../Common/getIcon.js";
 
 export const createBtnContent = (element) => {
     const btnContent = document.createElement("div");

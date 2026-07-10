@@ -1,4 +1,4 @@
-import { getIcon } from "../../../../Common/getIcon.js";
+import { getIcon } from "../../../../../Common/getIcon.js";
 import { createSpan } from "./createSpan.js";
 import { createChevron } from "./createChevron.js";
 import { createIconChevronWrapper } from "./createIconChevronWrapper.js";

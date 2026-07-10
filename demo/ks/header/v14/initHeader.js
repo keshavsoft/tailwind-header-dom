@@ -1,6 +1,3 @@
-// import "./WebComponents/v6/menuItem/index.js";
-// import "./WebComponents/v6/nav/index.js";
-
 import { buildMenuItem } from "./BuildMenuItem/buildMenuItem.js";
 import { buildNav } from "./BuildNav/buildNav.js";
 
@@ -13,12 +10,6 @@ const initHeader = (config = {}) => {
     const nav = buildNav({ inTitle: config.title, inUiClasses: config.uiClasses });
 
     header.appendChild(nav);
-    // header.appendChild(
-    //     buildNav({
-    //         inTitle: config.title,
-    //         inUiClasses: config.uiClasses
-    //     })
-    // );
 
     const menu = document.getElementById("menu");
 

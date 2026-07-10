@@ -28,4 +28,5 @@ class KSDropdownInline extends HTMLElement {
 
 customElements.define("ks-dropdown-inline", KSDropdownInline);
 window.KSDropdownInline = KSDropdownInline;
+
 export default {};

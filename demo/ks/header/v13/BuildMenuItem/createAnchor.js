@@ -9,6 +9,10 @@ export const createAnchor = ({
     if (isDropdown) {
         if (inDropdownType === "inline") {
             a = document.createElement("ks-dropdown-inline");
+        } else if (inDropdownType === "absolute") {
+            a = document.createElement("ks-dropdown-absolute");
+        } else if (inDropdownType === "responsive") {
+            a = document.createElement("ks-dropdown-responsive");
         } else {
             a = document.createElement("ks-dropdown");
         }

@@ -10,6 +10,26 @@
     },
     "items": [
         {
+            "text": "Create",
+            "id": "createHtmlId",
+            "icon": [],
+            "uiClasses": {
+                "aClass": "",
+                "svgDivClass": "size-10"
+            },
+            "svgName": "squaresPlus",
+            "dropdownItems": [
+                {
+                    "text": "New Quotation",
+                    "href": "#new-quotation"
+                },
+                {
+                    "text": "Import Quotation",
+                    "href": "#import"
+                }
+            ]
+        },
+        {
             "text": "Descend",
             "id": "headDescHtmlId",
             "icon": [],
@@ -31,7 +51,7 @@
             "href": "javascript:window.print()"
         },
         {
-            "text": "Inline",
+            "text": "Inline Dropdown",
             "id": "inlineDropdownId",
             "icon": [],
             "uiClasses": {
@@ -52,7 +72,7 @@
             ]
         },
         {
-            "text": "Absolute",
+            "text": "Absolute Dropdown",
             "id": "absoluteDropdownId",
             "icon": [],
             "uiClasses": {
@@ -73,7 +93,7 @@
             ]
         },
         {
-            "text": "Responsive",
+            "text": "Responsive Dropdown",
             "id": "responsiveDropdownId",
             "icon": [],
             "uiClasses": {

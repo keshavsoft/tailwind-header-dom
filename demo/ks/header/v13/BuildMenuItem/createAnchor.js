@@ -11,10 +11,8 @@ export const createAnchor = ({
             a = document.createElement("ks-dropdown-inline");
         } else if (inDropdownType === "absolute") {
             a = document.createElement("ks-dropdown-absolute");
-        } else if (inDropdownType === "responsive") {
-            a = document.createElement("ks-dropdown-responsive");
         } else {
-            a = document.createElement("ks-dropdown");
+            a = document.createElement("ks-dropdown-responsive");
         }
     } else {
         a = document.createElement("ks-menu-item");

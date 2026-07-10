@@ -30,7 +30,7 @@ customElements.define("ks-dropdown-responsive", KSDropdownResponsive);
 window.KSDropdownResponsive = KSDropdownResponsive;
 
 if (!customElements.get("ks-dropdown")) {
-    class KSDropdownDefault extends KSDropdownResponsive {}
+    class KSDropdownDefault extends KSDropdownResponsive { }
     customElements.define("ks-dropdown", KSDropdownDefault);
 }
 

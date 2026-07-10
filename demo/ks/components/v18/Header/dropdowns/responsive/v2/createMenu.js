@@ -1,5 +1,6 @@
 export const createMenu = () => {
     const menu = document.createElement("ul");
+    menu.classList.add("hidden");
     
     const updateLayout = () => {
         const isMobile = window.matchMedia("(max-width: 767.98px)").matches;

@@ -11,7 +11,8 @@ export const buildMenuItem = ({
     inClasses,
     inSvgName,
     inConfigUiClasses,
-    inDropdownItems
+    inDropdownItems,
+    inDropdownType
 }) => {
     const li = createLi(inClasses.liClass);
 
@@ -24,7 +25,8 @@ export const buildMenuItem = ({
         inSvgDivClass: inClasses.svgClass,
         inTextToShow: inTextToShow,
         inClassName: inClasses.spanClass,
-        inDropdownItems
+        inDropdownItems,
+        inDropdownType
     });
 
     li.appendChild(a);

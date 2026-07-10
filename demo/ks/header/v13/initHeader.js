@@ -56,7 +56,8 @@ const initHeader = (config = {}) => {
             inClasses: classes,
             inSvgName: item.svgName,
             inConfigUiClasses: config.uiClasses,
-            inDropdownItems: item.dropdownItems
+            inDropdownItems: item.dropdownItems,
+            inDropdownType: item.dropdownType
         });
 
         menu.appendChild(li);

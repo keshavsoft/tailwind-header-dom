@@ -1,10 +1,20 @@
 export const createAnchor = ({
     inHtmlId = "", inHref = "#", inClass = "", inTableName = "",
     inSvgName = "", inSvgDivClass = "", inClassName, inTextToShow,
-    inDropdownItems = []
+    inDropdownItems = [], inDropdownType = ""
 }) => {
     const isDropdown = Array.isArray(inDropdownItems) && inDropdownItems.length > 0;
-    const a = isDropdown ? document.createElement("ks-dropdown") : document.createElement("ks-menu-item");
+    
+    let a;
+    if (isDropdown) {
+        if (inDropdownType === "inline") {
+            a = document.createElement("ks-dropdown-inline");
+        } else {
+            a = document.createElement("ks-dropdown");
+        }
+    } else {
+        a = document.createElement("ks-menu-item");
+    }
 
     a.setAttribute(
         "ks-id",

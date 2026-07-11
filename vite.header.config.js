@@ -2,21 +2,25 @@ import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
 import { fileURLToPath } from "url";
-import { templateVersion } from "./src/version.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 let config;
 
 if (process.env.VITE_DYNAMIC_BUILD === "true") {
+    const templateVersion = process.env.VITE_TEMPLATE_VERSION;
+    const minify = process.env.VITE_MINIFY === "true";
+    const fileNameSuffix = minify ? "ksheader.min.js" : "ksheader.js";
+
     config = {
         build: {
             lib: {
-                entry: "src/header.js",
+                entry: "header.js",
                 name: "KSHeader",
                 formats: ["umd"],
-                fileName: () => `${templateVersion}/ksheader.js`
+                fileName: () => `${templateVersion}/${fileNameSuffix}`
             },
+            minify: minify ? "esbuild" : false,
             outDir: "public",
             emptyOutDir: false
         }
@@ -28,36 +32,36 @@ if (process.env.VITE_DYNAMIC_BUILD === "true") {
         return fs.statSync(path.join(binHeaderDir, f)).isDirectory() && /^v\d+$/.test(f);
     });
 
-    for (const version of versions) {
-        const templatesDir = path.join(binHeaderDir, version, "commands/header/template");
-        if (!fs.existsSync(templatesDir)) continue;
+    const headerTempPath = path.resolve(__dirname, "header.js");
 
-        const templates = fs.readdirSync(templatesDir).filter(t => {
-            return fs.statSync(path.join(templatesDir, t)).isDirectory() && /^v\d+$/.test(t);
-        });
+    try {
+        for (const version of versions) {
+            const templatesDir = path.join(binHeaderDir, version, "commands/header/template");
+            if (!fs.existsSync(templatesDir)) continue;
 
-        for (const template of templates) {
-            const templateNum = parseInt(template.slice(1));
-            if (templateNum < 13) continue; // follow v13 and next
+            const templates = fs.readdirSync(templatesDir).filter(t => {
+                return fs.statSync(path.join(templatesDir, t)).isDirectory() && /^v\d+$/.test(t);
+            });
 
-            const templateVersionName = `v${templateNum}`;
-            const initHeaderPath = `../bin/header/${version}/commands/header/template/${template}/initHeader.js`;
-            const absoluteInitHeaderPath = path.resolve(binHeaderDir, version, "commands/header/template", template, "initHeader.js");
+            for (const template of templates) {
+                const templateNum = parseInt(template.slice(1));
+                if (templateNum < 13) continue; // follow v13 and next
 
-            if (!fs.existsSync(absoluteInitHeaderPath)) {
-                console.warn(`File not found: ${absoluteInitHeaderPath}`);
-                continue;
-            }
+                const templateVersionName = `v${templateNum}`;
+                const absoluteInitHeaderPath = path.resolve(binHeaderDir, version, "commands/header/template", template, "initHeader.js");
 
-            console.log(`Building dynamically for version ${templateVersionName} (${version} / ${template})...`);
+                if (!fs.existsSync(absoluteInitHeaderPath)) {
+                    console.warn(`File not found: ${absoluteInitHeaderPath}`);
+                    continue;
+                }
 
-            // Dynamically write src/version.js
-            const versionContent = `// Generated file - do not edit directly\nexport const templateVersion = "${templateVersionName}";\n`;
-            fs.writeFileSync(path.resolve(__dirname, "src/version.js"), versionContent);
+                console.log(`Building dynamically for version ${templateVersionName} (${version} / ${template})...`);
 
-            // Dynamically write src/header.js
-            const headerContent = `// Generated file - do not edit directly
-import initHeader from "${initHeaderPath}";
+                const relativeInitHeaderPath = "./" + path.relative(__dirname, absoluteInitHeaderPath).replace(/\\/g, "/");
+
+                // Dynamically write header.js in the root folder
+                const headerContent = `// Generated file - do not edit directly
+import initHeader from "${relativeInitHeaderPath}";
 
 (async () => {
     window.KSHeaderVersion = "${templateVersionName}";
@@ -65,25 +69,39 @@ import initHeader from "${initHeaderPath}";
     window.KSHeader = initHeader;
 })();
 `;
-            fs.writeFileSync(path.resolve(__dirname, "src/header.js"), headerContent);
+                fs.writeFileSync(headerTempPath, headerContent);
 
-            // Run sub-build process
-            execSync("npx vite build --config vite.header.config.js", {
-                env: {
-                    ...process.env,
-                    VITE_DYNAMIC_BUILD: "true"
-                },
-                stdio: "inherit"
-            });
+                // Run build for unminified version
+                console.log(`  Generating unminified (ksheader.js)...`);
+                execSync("npx vite build --config vite.header.config.js", {
+                    env: {
+                        ...process.env,
+                        VITE_DYNAMIC_BUILD: "true",
+                        VITE_TEMPLATE_VERSION: templateVersionName,
+                        VITE_MINIFY: "false"
+                    },
+                    stdio: "inherit"
+                });
+
+                // Run build for minified version
+                console.log(`  Generating minified (ksheader.min.js)...`);
+                execSync("npx vite build --config vite.header.config.js", {
+                    env: {
+                        ...process.env,
+                        VITE_DYNAMIC_BUILD: "true",
+                        VITE_TEMPLATE_VERSION: templateVersionName,
+                        VITE_MINIFY: "true"
+                    },
+                    stdio: "inherit"
+                });
+            }
+        }
+    } finally {
+        // Clean up temporary header.js file
+        if (fs.existsSync(headerTempPath)) {
+            fs.unlinkSync(headerTempPath);
         }
     }
-
-    // Restore baseline version (v13)
-    const baselineVersion = "v13";
-    const baselineHeaderPath = `../bin/header/v5/commands/header/template/v13/initHeader.js`;
-    
-    fs.writeFileSync(path.resolve(__dirname, "src/version.js"), `export const templateVersion = "${baselineVersion}";\n`);
-    fs.writeFileSync(path.resolve(__dirname, "src/header.js"), `import initHeader from "${baselineHeaderPath}";\n\n(async () => {\n    window.KSHeaderVersion = "${baselineVersion}";\n\n    window.KSHeader = initHeader;\n})();\n`);
 
     console.log("Dynamic build completed successfully.");
     process.exit(0);

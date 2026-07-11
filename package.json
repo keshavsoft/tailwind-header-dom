@@ -17,6 +17,7 @@
     "build:header": "vite build --config vite.header.config.js"
   },
   "devDependencies": {
+    "esbuild": "^0.28.1",
     "vite": "^8.0.14"
   },
   "type": "module",

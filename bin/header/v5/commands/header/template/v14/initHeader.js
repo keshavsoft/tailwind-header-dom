@@ -61,8 +61,8 @@ window.KSHeader = initHeader;
 window.ks = window.ks || {};
 window.ks.components = window.ks.components || {};
 window.ks.components.header = initHeader;
-window.ks.components.headerVersion = "v13";
+window.ks.components.headerVersion = "v14";
 
-console.log("KSHeader v13 loaded to DOM");
+// console.log("KSHeader v13 loaded to DOM");
 
 export default initHeader;
